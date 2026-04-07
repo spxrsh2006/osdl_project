@@ -1,0 +1,268 @@
+/* =========================================
+   Hotel Management System - JavaFX Stylesheet
+   ========================================= */
+
+/* Root */
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-background-color: #f0f4f8;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+    -fx-background-color: #1a2236;
+    -fx-padding: 0 0 0 0;
+    -fx-min-width: 200px;
+    -fx-pref-width: 200px;
+}
+
+.sidebar-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6366f1;
+    -fx-padding: 22 20 18 20;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 13px;
+    -fx-padding: 12 20 12 20;
+    -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+    -fx-pref-width: 200px;
+    -fx-background-radius: 0;
+    -fx-border-width: 0;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #253047;
+    -fx-text-fill: #e2e8f0;
+}
+
+.sidebar-button-active {
+    -fx-background-color: #2d3e5a;
+    -fx-text-fill: #818cf8;
+    -fx-font-weight: bold;
+}
+
+.sidebar-divider {
+    -fx-padding: 6 20 6 20;
+    -fx-text-fill: #475569;
+    -fx-font-size: 10px;
+}
+
+/* ---- Header ---- */
+.header {
+    -fx-background-color: white;
+    -fx-padding: 16 20 16 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, 2);
+}
+
+.label-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.label-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #94a3b8;
+}
+
+/* ---- Card ---- */
+.card {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 12, 0, 0, 3);
+}
+
+.card-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+/* ---- Form Labels ---- */
+.form-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #475569;
+    -fx-font-weight: bold;
+}
+
+/* ---- Inputs ---- */
+.text-field, .combo-box, .text-field:focused {
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 7 10 7 10;
+    -fx-font-size: 13px;
+    -fx-background-color: #f8fafc;
+}
+
+.text-field:focused {
+    -fx-border-color: #6366f1;
+    -fx-background-color: white;
+}
+
+.combo-box {
+    -fx-border-color: #e2e8f0;
+    -fx-background-radius: 6;
+}
+
+/* ---- Buttons ---- */
+.button-primary {
+    -fx-background-color: #6366f1;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 9 18 9 18;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(99,102,241,0.3), 8, 0, 0, 3);
+}
+
+.button-primary:hover {
+    -fx-background-color: #4f46e5;
+    -fx-effect: dropshadow(gaussian, rgba(99,102,241,0.5), 12, 0, 0, 4);
+}
+
+.button-primary:pressed {
+    -fx-background-color: #4338ca;
+    -fx-effect: none;
+}
+
+.button-danger {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 9 18 9 18;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button-danger:hover {
+    -fx-background-color: #dc2626;
+}
+
+.button-success {
+    -fx-background-color: #10b981;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 9 18 9 18;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button-success:hover {
+    -fx-background-color: #059669;
+}
+
+.button-warning {
+    -fx-background-color: #f59e0b;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 9 18 9 18;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button-warning:hover {
+    -fx-background-color: #d97706;
+}
+
+/* ---- Table ---- */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-size: 36px;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+}
+
+.table-row-cell {
+    -fx-border-color: transparent;
+    -fx-background-color: white;
+    -fx-cell-size: 42px;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f8fafc;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #eef2ff;
+    -fx-text-fill: #1e293b;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #f1f5f9;
+}
+
+/* ---- Status Badge Styles ---- */
+.status-available {
+    -fx-text-fill: #10b981;
+    -fx-font-weight: bold;
+}
+
+.status-occupied {
+    -fx-text-fill: #ef4444;
+    -fx-font-weight: bold;
+}
+
+/* ---- Stats Card ---- */
+.stat-card {
+    -fx-background-color: white;
+    -fx-padding: 16;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 2);
+    -fx-min-width: 130px;
+}
+
+.stat-number {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.stat-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #94a3b8;
+}
+
+/* ---- Separator ---- */
+.separator {
+    -fx-background-color: #e2e8f0;
+}
+
+/* ---- Scroll Pane ---- */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
