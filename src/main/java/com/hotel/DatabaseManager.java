@@ -11,11 +11,11 @@ import java.util.List;
 public class DatabaseManager {
     private static final String URL = "jdbc:sqlite:hotel.db";
 
-    public static void initDatabase() {
+    public static synchronized void initDatabase() {
         try (Connection conn = DriverManager.getConnection(URL);
              Statement stmt = conn.createStatement()) {
             
-            // Rooms table
+
             stmt.execute("CREATE TABLE IF NOT EXISTS rooms (" +
                     "roomNumber TEXT PRIMARY KEY," +
                     "type TEXT," +
@@ -24,13 +24,13 @@ public class DatabaseManager {
                     "customerName TEXT" +
                     ")");
 
-            // Customers table
+
             stmt.execute("CREATE TABLE IF NOT EXISTS customers (" +
                     "name TEXT PRIMARY KEY," +
                     "contact TEXT" +
                     ")");
 
-            // FoodOrders table
+
             stmt.execute("CREATE TABLE IF NOT EXISTS food_orders (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "customerName TEXT," +
@@ -44,8 +44,8 @@ public class DatabaseManager {
         }
     }
 
-    // --- ROOMS ---
-    public static List<Room> fetchAllRooms() {
+
+    public static synchronized List<Room> fetchAllRooms() {
         List<Room> rooms = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(URL);
              Statement stmt = conn.createStatement();
@@ -60,7 +60,7 @@ public class DatabaseManager {
         return rooms;
     }
 
-    public static void insertRoom(Room r) {
+    public static synchronized void insertRoom(Room r) {
         String sql = "INSERT INTO rooms(roomNumber, type, price, status, customerName) VALUES(?,?,?,?,?)";
         try (Connection conn = DriverManager.getConnection(URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -73,7 +73,7 @@ public class DatabaseManager {
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
-    public static void removeRoom(String roomNumber) {
+    public static synchronized void removeRoom(String roomNumber) {
         String sql = "DELETE FROM rooms WHERE roomNumber = ?";
         try (Connection conn = DriverManager.getConnection(URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -82,7 +82,7 @@ public class DatabaseManager {
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
-    public static void updateRoom(Room r) {
+    public static synchronized void updateRoom(Room r) {
         String sql = "UPDATE rooms SET status = ?, customerName = ? WHERE roomNumber = ?";
         try (Connection conn = DriverManager.getConnection(URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -93,8 +93,8 @@ public class DatabaseManager {
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
-    // --- CUSTOMERS ---
-    public static List<Customer> fetchAllCustomers() {
+
+    public static synchronized List<Customer> fetchAllCustomers() {
         List<Customer> customers = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(URL);
              Statement stmt = conn.createStatement();
@@ -106,7 +106,7 @@ public class DatabaseManager {
         return customers;
     }
 
-    public static void insertCustomer(Customer c) {
+    public static synchronized void insertCustomer(Customer c) {
         String sql = "INSERT INTO customers(name, contact) VALUES(?,?)";
         try (Connection conn = DriverManager.getConnection(URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -116,7 +116,7 @@ public class DatabaseManager {
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
-    public static void removeCustomer(String name) {
+    public static synchronized void removeCustomer(String name) {
         String sql = "DELETE FROM customers WHERE name = ?";
         try (Connection conn = DriverManager.getConnection(URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -125,8 +125,8 @@ public class DatabaseManager {
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
-    // --- FOOD ORDERS ---
-    public static List<FoodOrder> fetchAllFoodOrders() {
+
+    public static synchronized List<FoodOrder> fetchAllFoodOrders() {
         List<FoodOrder> orders = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(URL);
              Statement stmt = conn.createStatement();
@@ -138,7 +138,7 @@ public class DatabaseManager {
         return orders;
     }
 
-    public static void insertFoodOrder(FoodOrder fo) {
+    public static synchronized void insertFoodOrder(FoodOrder fo) {
         String sql = "INSERT INTO food_orders(customerName, itemName, quantity, totalCost) VALUES(?,?,?,?)";
         try (Connection conn = DriverManager.getConnection(URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -150,8 +150,8 @@ public class DatabaseManager {
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
-    public static void removeFoodOrder(FoodOrder fo) {
-        // Removes all matching orders. It's a simple desktop app workaround.
+    public static synchronized void removeFoodOrder(FoodOrder fo) {
+
         String sql = "DELETE FROM food_orders WHERE customerName = ? AND itemName = ? AND quantity = ? AND totalCost = ?";
         try (Connection conn = DriverManager.getConnection(URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -163,7 +163,7 @@ public class DatabaseManager {
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
-    public static void removeFoodOrdersForCustomer(String customerName) {
+    public static synchronized void removeFoodOrdersForCustomer(String customerName) {
         String sql = "DELETE FROM food_orders WHERE customerName = ?";
         try (Connection conn = DriverManager.getConnection(URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
